@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title>Psychic Game</title>
+</head>
+<body>
+
+      
+      
+      <div> Guess what letter i'm thinking of </div>
+      <br>
+      <div id = "wins">Wins:0</div>
+      <br>
+      <div id = "losses">Losses:0</div>
+      <br>
+      <div id = "guesses left">Guesses left : 10</div>
+      <br>
+      <div id = "letters used" > Your guesses so far: </div>
+
+      
+      <script type="text/javascript">
+
+      ////Create an Array for letters
+
+        var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var wins= 0;
+        var losses=0;
+        var guesses_left=10;
+        var letters_used=[];
+
+
+      ////Computer Generates Random Letter
+
+        var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        console.log(getRandomLetter);
+
+
+      ////Listening for User Key input
+        
+        document.onkeyup = function pressKey(event) {
+        console.log(event.key);  
+
+
+      //// user input matches array-recording a win or incorrect input
+
+        if (event.key === getRandomLetter) {
+            wins++;
+            console.log("you're a winner");
+          }
+
+        else if (event.key != getRandomLetter) {
+            guesses_left--;
+            console.log("you're a loser");
+          }
+
+        
+
+ 
+  
+
+      ////Counter function for what's on the display
+
+        
+
+    
+
+      ////Reset function once lives remaining are = 0 
+
+     
+
+
+
+</script>
+
+</body>
+</html>
