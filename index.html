@@ -3,31 +3,32 @@
 <head>
       <meta charset="UTF-8">
       <title>Psychic Game</title>
+      
+      
 </head>
 <body>
 
-      
-      
       <div> Guess what letter i'm thinking of </div>
       <br>
       <div id = "wins">Wins:0</div>
       <br>
       <div id = "losses">Losses:0</div>
       <br>
-      <div id = "guesses left">Guesses left : 10</div>
+      <div id = "guessesleft">Guesses left : 10</div>
       <br>
-      <div id = "letters used" > Your guesses so far: </div>
-
+      <div id = "lettersused" > Your guesses so far: </div>
       
       <script type="text/javascript">
+
 
       ////Create an Array for letters
 
         var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
         var wins= 0;
         var losses=0;
-        var guesses_left=10;
-        var letters_used=[];
+        var guessesleft=9;
+        var lettersused=[];
+        var letterToGuess=null;
 
 
       ////Computer Generates Random Letter
@@ -42,36 +43,57 @@
         console.log(event.key);  
 
 
-      //// user input matches array-recording a win or incorrect input
+      ////Recording User guesses
+
+      var UserGuess = event.key;
+      lettersused.push(UserGuess);
+      document.getElementById('lettersused').innerHTML = "Your Guesses so far: " + lettersused.join(", ");
+
+      ////// Updating Guesses Left
+
+      document.getElementById('guessesleft').innerHTML = "Guesses Left: " + guessesleft;
+      guessesleft--;
+
+
+     
+      ////Reset function once lives remaining are = 0 
+
+      var reset = function() {
+      wins = 0;
+      losses = 0;
+      guessesleft = 9;
+      lettersused = [];
+  
+}
+
+      
+      //// Recording wins and losses
 
         if (event.key === getRandomLetter) {
             wins++;
             console.log("you're a winner");
+            document.querySelector('#wins').innerHTML = "wins: " + wins;
+            alert("You're a winner");
           }
 
-        else if (event.key != getRandomLetter) {
-            guesses_left--;
-            console.log("you're a loser");
-          }
+        else {
+             losses++;
+            console.log(losses);
+            document.querySelector('#losses').innerHTML = "losses: " + losses; 
+            alert("You're a loser");
 
+    }
+
+            if (guessesleft == 0) {
+            reset();
+  }
         
 
  
   
-
-      ////Counter function for what's on the display
-
-        
-
-    
-
-      ////Reset function once lives remaining are = 0 
-
-     
-
-
-
+};
+      
+  
 </script>
-
 </body>
 </html>
